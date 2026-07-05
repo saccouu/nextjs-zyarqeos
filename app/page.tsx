@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
-import { FORTUNE_DATA } from '../src/data/fortuneData';
-import { AD_BANNERS } from '../src/data/adBanners';
+import { FORTUNE_DATA } from '../data/fortuneData';
+import { AD_BANNERS } from '../data/adBanners';
 
 const CHARACTERS = [
   {
@@ -215,31 +215,38 @@ export default function Home() {
               {result.text}
             </p>
           </div>
+          {/* 広告バナー表示エリア */}
+          <div className="space-y-4 pt-4">
+            {AD_BANNERS.map((banner, idx) => (
+              <div
+                key={idx}
+                className="bg-[#2d2448] p-3 rounded-2xl border border-pink-500/30 text-left"
+              >
+                <p className="text-xs text-pink-300 font-bold mb-2">
+                  {banner.label}
+                </p>
+                <a
+                  href={banner.link}
+                  target="_blank"
+                  rel="noopener noreferrer sponsored"
+                  className="block rounded-xl overflow-hidden"
+                >
+                  <img
+                    src={banner.imageSrc}
+                    alt={banner.alt}
+                    className="w-full h-auto rounded-xl"
+                  />
+                </a>
+              </div>
+            ))}
+          </div>
+
           <button
             onClick={() => setStatus('input')}
             className="w-full text-center text-pink-300 underline pt-2"
           >
             もう一度占う
           </button>
-
-          {/* 広告バナー表示エリア */}
-          <div className="space-y-4 pt-4">
-            {AD_BANNERS.map((banner, idx) => (
-              <a
-                key={idx}
-                href={banner.link}
-                target="_blank"
-                rel="noopener noreferrer sponsored"
-                className="block rounded-2xl overflow-hidden shadow-lg border border-pink-500/20"
-              >
-                <img
-                  src={banner.imageSrc}
-                  alt={banner.alt}
-                  className="w-full h-auto"
-                />
-              </a>
-            ))}
-          </div>
         </div>
       )}
 
