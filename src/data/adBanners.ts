@@ -3,13 +3,13 @@
 
 export const AD_BANNERS = [
   {
-    imageSrc: '/ads/ココナラ.png',
+    imageSrc: '/ads/banner1.png',
     link: 'https://example.com/your-affiliate-link-1', // ← 決まったら書き換える
-    alt: 'ココナラの広告',
+    alt: 'ココナラ',
   },
   {
-    imageSrc: '/ads/ブリランテ.png',
+    imageSrc: '/ads/ブbanner2.png',
     link: 'https://example.com/your-affiliate-link-2', // ← 決まったら書き換える
-    alt: 'ブリランテの広告',
+    alt: 'ブリランテ',
   },
 ];
