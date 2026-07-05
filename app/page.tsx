@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
-import { FORTUNE_DATA } from '../src/data/fortuneData';
+import { FORTUNE_DATA } from '../data/fortuneData';
+import { AD_BANNERS } from '../data/adBanners';
 
 const CHARACTERS = [
   {
@@ -36,8 +37,8 @@ const CHARACTERS = [
     desc: '直感と感性を何よりも大切にする自由人です。束縛を嫌いますが、深い絆を大切にします。',
   },
   {
-    name: '頼れるクマ',
-    desc: 'しっかり者で、周囲を優しく包み込む世話焼きタイプです。穏やかな恋愛を好みます。',
+    name: '包容力のクマ',
+    desc: '頼りがいがあり、周囲を優しく包み込む世話焼きタイプです。穏やかな恋愛を好みます。',
   },
   {
     name: '知的なフクロウ',
@@ -98,7 +99,7 @@ export default function Home() {
       {status === 'input' && (
         <div className="w-full max-w-md space-y-6">
           <h1 className="text-xl font-bold text-center text-pink-400">
-            あなたの恋愛キャラと運命を占う
+            あなた恋愛キャラと恋愛占い
           </h1>
           <label className="text-sm text-pink-300 font-medium block">
             生年月日
@@ -181,7 +182,7 @@ export default function Home() {
             onClick={startDiagnosis}
             className="w-full py-4 bg-gradient-to-r from-pink-600 to-purple-600 rounded-2xl font-bold text-lg shadow-lg"
           >
-            占いスタート
+            恋愛運を占う
           </button>
         </div>
       )}
@@ -208,7 +209,7 @@ export default function Home() {
           </div>
           <div className="bg-[#2d2448] p-6 rounded-2xl border border-pink-500/30 text-left">
             <h3 className="text-center text-pink-300 font-bold mb-4">
-              占い結果
+              恋愛診断結果
             </h3>
             <p className="text-sm text-gray-200 leading-relaxed">
               {result.text}
@@ -220,6 +221,25 @@ export default function Home() {
           >
             もう一度占う
           </button>
+
+          {/* 広告バナー表示エリア */}
+          <div className="space-y-4 pt-4">
+            {AD_BANNERS.map((banner, idx) => (
+              <a
+                key={idx}
+                href={banner.link}
+                target="_blank"
+                rel="noopener noreferrer sponsored"
+                className="block rounded-2xl overflow-hidden shadow-lg border border-pink-500/20"
+              >
+                <img
+                  src={banner.imageSrc}
+                  alt={banner.alt}
+                  className="w-full h-auto"
+                />
+              </a>
+            ))}
+          </div>
         </div>
       )}
 
