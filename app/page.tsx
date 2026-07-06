@@ -112,9 +112,11 @@ export default function Home() {
     <div className="min-h-screen bg-[#1a142d] text-white p-6 flex justify-center">
       {status === 'input' && (
         <div className="w-full max-w-md space-y-6">
-          <h1 className="text-xl font-bold text-center text-pink-400">
-            🔮 あなた恋愛キャラと恋愛占い
-          </h1>
+          <div className="bg-[#2d2448] p-4 rounded-2xl border border-pink-500/30">
+            <h1 className="text-xl font-bold text-center text-pink-400">
+              🔮 あなた恋愛キャラと恋愛占い
+            </h1>
+          </div>
           <label className="text-sm text-pink-300 font-medium block">
             😊 お名前（ニックネームでもOK・空欄でも占えます）
           </label>
@@ -224,9 +226,9 @@ export default function Home() {
 
       {status === 'result' && (
         <div className="w-full max-w-sm space-y-6 pt-10 text-center">
-          <div>
+          <div className="bg-[#2d2448] p-6 rounded-2xl border border-pink-500/30">
             <p className="text-sm mb-1">💫 {displayName}の恋愛キャラ</p>
-            <h2 className="text-lg font-bold text-pink-400">
+            <h2 className="text-xl font-bold text-pink-400">
               {result.char.emoji} 「{result.char.name}」
             </h2>
             <p className="text-sm text-gray-400 mt-2 italic">
