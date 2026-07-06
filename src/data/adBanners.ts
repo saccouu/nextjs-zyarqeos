@@ -9,7 +9,7 @@
 
 export const AD_BANNERS = [
   {
-    htmlCode: `ここに1つ目のA8.netの商品リンクコードをそのまま貼り付け`,
+    htmlCode: `<span class="a8ad 4eqbZ75-g7-voylbN8"></span><script type="text/javascript" src="//statics.a8.net/ad/ad.js"></script><script type="text/javascript">a8adscript('body').showAd({"req": {"mat":"3Z4WIB+45GOHE+2PEO+HUSFL","alt":"商品リンク","id":"4eqbZ75-g7-voylbN8"},"goods": {"ejp":"h"+"ttps://coconala.com/categories/3?service_kind=1","imu":"h"+"ttps://www.bbauranai.jp/ads/banner1.png"}});</script>`,
     label: 'あなたにおすすめ',
   },
   {
