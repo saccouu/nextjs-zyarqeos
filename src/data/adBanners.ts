@@ -6,6 +6,9 @@
 // （見えない計測用の画像タグが含まれていることがありますが、絶対に消さないでください）
 //
 // label: バナーの左上に小さく表示される見出し文字（例: "あなたにおすすめ"）
+//
+// 2つ目のバナーの準備ができたら、下のように { htmlCode, label } の
+// オブジェクトを1つ、この配列に追加してください。
 export const AD_BANNERS = [
   {
     htmlCode: `<a href="https://px.a8.net/svt/ejp?a8mat=3Z4WIB+45GOHE+2PEO+HUSFL&a8ejpredirect=https%3A%2F%2Fcoconala.com%2Fcategories%2F3%3Fservice_kind%3D1" rel="nofollow">
@@ -13,8 +16,9 @@ export const AD_BANNERS = [
 <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=3Z4WIB+45GOHE+2PEO+HUSFL" alt="">`,
     label: 'あなたにおすすめ',
   },
-  {
-    htmlCode: `ここに2つ目のA8.netの商品リンクコードをそのまま貼り付け`,
-    label: 'こちらもおすすめ',
-  },
+  // 2つ目の準備ができたら、ここに追加してください（例）
+  // {
+  //   htmlCode: `A8.netからコピーしたコードをそのまま貼り付け`,
+  //   label: 'こちらもおすすめ',
+  // },
 ];
