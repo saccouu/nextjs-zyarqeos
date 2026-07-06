@@ -6,50 +6,62 @@ import { AD_BANNERS } from '../src/data/adBanners';
 const CHARACTERS = [
   {
     name: '慈愛のパンダ',
+    emoji: '🐼',
     desc: '周囲を和ませる温かい心を持っています。争いを避け、調和を大切にする平和主義者です。',
   },
   {
     name: '情熱のイノシシ',
+    emoji: '🐗',
     desc: '一度好きになると一直線に進みます。行動力と情熱で相手を惹きつけるパワーがあります。',
   },
   {
     name: '冷静なキツネ',
+    emoji: '🦊',
     desc: '鋭い観察眼で相手の心を見抜く力があります。駆け引きは得意ですが、素直になれずにチャンスを逃してしまうことも。',
   },
   {
     name: 'ひたむきなウサギ',
+    emoji: '🐰',
     desc: '寂しがり屋で甘え上手な、愛されキャラです。周囲との調和を大切にします。',
   },
   {
     name: '高嶺のネコ',
+    emoji: '🐱',
     desc: 'マイペースでミステリアスな魅力があります。ひとりの時間を大切にし、駆け引きで相手を夢中にさせます。',
   },
   {
     name: '一途なイヌ',
+    emoji: '🐶',
     desc: '非常に誠実で、パートナーを愛し抜く一途さを持っています。一度信頼を寄せると献身的に支えます。',
   },
   {
     name: '華やかなクジャク',
+    emoji: '🦚',
     desc: '社交的で、その場の空気を明るくする華やかさがあります。主導権を握ることを好みます。',
   },
   {
     name: '自由なイルカ',
+    emoji: '🐬',
     desc: '直感と感性を何よりも大切にする自由人です。束縛を嫌いますが、深い絆を大切にします。',
   },
   {
     name: '包容力のクマ',
+    emoji: '🐻',
     desc: '頼りがいがあり、周囲を優しく包み込む世話焼きタイプです。穏やかな恋愛を好みます。',
   },
   {
     name: '知的なフクロウ',
+    emoji: '🦉',
     desc: '客観的に状況を分析する、冷静な知性派です。感情に流されず将来性を見極めます。',
   },
   {
     name: '純粋なシカ',
+    emoji: '🦌',
     desc: '感受性が人一倍強く、とても繊細でピュアな心を持っています。優しさに救われている人が多いでしょう。',
   },
   {
     name: '情熱のライオン',
+    emoji: '🦁',
     desc: '自信に満ちたリーダー気質で、恋愛では相手を引っ張ることを好みます。',
   },
 ];
@@ -57,6 +69,7 @@ const CHARACTERS = [
 export default function Home() {
   const [status, setStatus] = useState('input');
   const [formData, setFormData] = useState({
+    name: '',
     year: '',
     month: '',
     day: '',
@@ -64,6 +77,7 @@ export default function Home() {
     interest: '',
   });
   const [result, setResult] = useState({ char: CHARACTERS[0], text: '' });
+  const displayName = formData.name.trim() ? `${formData.name.trim()}さん` : 'あなた';
 
   const startDiagnosis = () => {
     if (
@@ -99,10 +113,22 @@ export default function Home() {
       {status === 'input' && (
         <div className="w-full max-w-md space-y-6">
           <h1 className="text-xl font-bold text-center text-pink-400">
-            あなたの恋愛キャラと運命を占う
+            🔮 あなた恋愛キャラと恋愛占い
           </h1>
           <label className="text-sm text-pink-300 font-medium block">
-            生年月日
+            😊 お名前（ニックネームでもOK・空欄でも占えます）
+          </label>
+          <input
+            type="text"
+            value={formData.name}
+            onChange={(e) =>
+              setFormData({ ...formData, name: e.target.value })
+            }
+            placeholder="例：はなこ"
+            className="w-full p-4 bg-[#2d2448] border border-gray-600 rounded-xl placeholder-gray-500"
+          />
+          <label className="text-sm text-pink-300 font-medium block">
+            🎂 生年月日
           </label>
           <div className="flex gap-2">
             <select
@@ -147,7 +173,7 @@ export default function Home() {
             </select>
           </div>
           <label className="text-sm text-pink-300 font-medium block">
-            今の恋愛ステータスは？
+            💌 今の恋愛ステータスは？
           </label>
           <select
             className="w-full p-4 bg-[#2d2448] border border-gray-600 rounded-xl"
@@ -163,7 +189,7 @@ export default function Home() {
             ))}
           </select>
           <label className="text-sm text-pink-300 font-medium block">
-            今一番気になっていること
+            💭 今一番気になっていること
           </label>
           <select
             className="w-full p-4 bg-[#2d2448] border border-gray-600 rounded-xl"
@@ -182,14 +208,14 @@ export default function Home() {
             onClick={startDiagnosis}
             className="w-full py-4 bg-gradient-to-r from-pink-600 to-purple-600 rounded-2xl font-bold text-lg shadow-lg"
           >
-            占いスタート
+            ✨ 占いスタート ✨
           </button>
         </div>
       )}
 
       {status === 'loading' && (
         <div className="text-center space-y-4 pt-20">
-          <p>あなたの運勢を紐解いています...</p>
+          <p>🔮 {displayName}の運勢を紐解いています...</p>
           <div className="w-64 h-3 bg-gray-700 rounded-full mx-auto overflow-hidden">
             <div className="h-full bg-pink-500 animate-[loading_3s_linear_forwards]"></div>
           </div>
@@ -199,17 +225,17 @@ export default function Home() {
       {status === 'result' && (
         <div className="w-full max-w-sm space-y-6 pt-10 text-center">
           <div>
-            <p className="text-sm mb-1">あなたの恋愛キャラ</p>
-            <h2 className="text-2xl font-bold text-pink-400">
-              「{result.char.name}」
+            <p className="text-sm mb-1">💫 {displayName}の恋愛キャラ</p>
+            <h2 className="text-lg font-bold text-pink-400">
+              {result.char.emoji} 「{result.char.name}」
             </h2>
             <p className="text-sm text-gray-400 mt-2 italic">
               {result.char.desc}
             </p>
           </div>
           <div className="bg-[#2d2448] p-6 rounded-2xl border border-pink-500/30 text-left">
-            <h3 className="text-center text-pink-300 font-bold mb-4">
-              占い結果
+            <h3 className="text-center text-pink-300 font-bold mb-4 text-xl">
+              💬 占い結果
             </h3>
             <p className="text-sm text-gray-200 leading-relaxed">
               {result.text}
@@ -245,7 +271,7 @@ export default function Home() {
             onClick={() => setStatus('input')}
             className="w-full text-center text-pink-300 underline pt-2"
           >
-            もう一度占う
+            🔄 もう一度占う
           </button>
         </div>
       )}
