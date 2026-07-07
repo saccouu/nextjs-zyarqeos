@@ -304,7 +304,7 @@ export default function Home() {
                 className="bg-[#2d2448] p-3 rounded-2xl border border-pink-500/30 text-left"
               >
                 <p className="text-xs text-pink-300 font-bold mb-2">
-                  {banner.label}
+                  {banner.label.split('あなた').join(displayName)}
                 </p>
                 {banner.htmlCode ? (
                   // A8.netなどが発行した「そのまま貼るコード」を、
