@@ -283,7 +283,7 @@ export default function Home() {
               💬 占い結果
             </h3>
             <p className="text-sm text-gray-200 leading-relaxed">
-              {result.text}
+              {result.text.split('あなた').join(displayName)}
             </p>
           </div>
           <div className="bg-[#2d2448] p-6 rounded-2xl border border-pink-500/30 text-left">
