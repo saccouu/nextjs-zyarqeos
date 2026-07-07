@@ -288,10 +288,12 @@ export default function Home() {
           </div>
           <div className="bg-[#2d2448] p-6 rounded-2xl border border-pink-500/30 text-left">
             <h3 className="text-center text-pink-300 font-bold mb-4 text-xl">
-              📝 【アドバイス】
+              📝 {displayName}へのアドバイス
             </h3>
             <p className="text-sm text-gray-200 leading-relaxed">
-              {ADVICE_BY_STATUS[formData.loveStatus]}
+              {ADVICE_BY_STATUS[formData.loveStatus]
+                ?.split('あなた')
+                .join(displayName)}
             </p>
           </div>
           {/* 広告バナー表示エリア */}
