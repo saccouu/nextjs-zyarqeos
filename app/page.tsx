@@ -164,7 +164,7 @@ export default function Home() {
             </p>
           </div>
           <label className="text-sm text-pink-300 font-medium block">
-            😊 お名前（ニックネームでもOK・空欄でも占えます）
+            😊 お名前（ニックネームでもOK・ここは空欄でもOKよ）
           </label>
           <input
             type="text"
@@ -263,7 +263,7 @@ export default function Home() {
 
       {status === 'loading' && (
         <div className="text-center space-y-4 pt-20">
-          <p>🔮 {displayName}の運勢を紐解いています...</p>
+          <p>🔮 {displayName}の運勢を紐解いてるわ...</p>
           <div className="w-64 h-3 bg-gray-700 rounded-full mx-auto overflow-hidden">
             <div className="h-full bg-pink-500 animate-[loading_3s_linear_forwards]"></div>
           </div>
