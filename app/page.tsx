@@ -144,7 +144,7 @@ export default function Home() {
     const text =
       FORTUNE_DATA[selectedChar.name]?.[formData.loveStatus]?.[
         formData.interest
-      ] || 'ただいま診断中よ...';
+      ] || 'ただいま診断中です...';
 
     setResult({ char: selectedChar, text });
     setStatus('loading');
@@ -289,10 +289,8 @@ export default function Home() {
               {result.text.split('あなた').join(displayName)}
             </p>
           </div>
-          <div className="bg-[#2d2448] p-6 rounded-2xl border border-pink-500/30 text-left">
-            <h3 className="text-center text-pink-300 font-bold mb-4 text-xl">
-
-                        {/* 広告バナー表示エリア */}
+       
+          {/* 広告バナー表示エリア */}
           <div className="space-y-4 pt-4">
             {bannersToShow.map((banner, idx) => (
               <div
@@ -323,7 +321,9 @@ export default function Home() {
               </div>
             ))}
           </div>
-              
+          
+          <div className="bg-[#2d2448] p-6 rounded-2xl border border-pink-500/30 text-left">
+            <h3 className="text-center text-pink-300 font-bold mb-4 text-xl">
               📝 {displayName}へのアドバイス
             </h3>
             <p className="text-sm text-gray-200 leading-relaxed">
