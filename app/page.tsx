@@ -1,13 +1,10 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { FORTUNE_DATA } from '../src/data/fortuneData';
-import { AD_BANNERS } from '../src/data/adBanners';
 import { ADVICE_BY_STATUS } from '../src/data/advice';
 
 // A8.netなど、<script>タグを含む「スクリプト実行型」の広告コードを
 // 正しく動かすための専用コンポーネントです。
-// (Reactは通常、innerHTML経由で挿入されたscriptタグを実行しないため、
-//  scriptタグだけを作り直してDOMに追加し直しています)
 function AdEmbed({ html }: { html: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -17,16 +14,12 @@ function AdEmbed({ html }: { html: string }) {
 
     container.innerHTML = html;
 
-    // 挿入したHTMLの中にある<script>タグを探して、実行されるように作り直す
     const oldScripts = Array.from(container.querySelectorAll('script'));
     oldScripts.forEach((oldScript) => {
       const newScript = document.createElement('script');
       Array.from(oldScript.attributes).forEach((attr) => {
         newScript.setAttribute(attr.name, attr.value);
       });
-      // 元のコードに書かれた順番通りに実行させるための設定
-      // (これがないと、外部ファイルの読み込みが後回しになり、
-      //  まだ準備が整う前に次のscriptが動いてエラーになることがある)
       newScript.async = false;
       newScript.textContent = oldScript.textContent;
       oldScript.parentNode?.replaceChild(newScript, oldScript);
@@ -112,40 +105,6 @@ export default function Home() {
   const [result, setResult] = useState({ char: CHARACTERS[0], text: '' });
   const displayName = formData.name.trim() ? `${formData.name.trim()}さん` : 'あなた';
 
-  // 表示する2つのバナーを、それぞれidで指定して取得します
-  const firstBanner = AD_BANNERS.find((banner) => banner.id === 'coconala');
-  const secondBanner = AD_BANNERS.find((banner) => banner.id === 'brillante');
-
-  // バナー1つ分を表示するための共通部品
-  const renderBanner = (banner: any) => {
-    if (!banner) return null;
-    return (
-      <div className="bg-[#2d2448] p-3 rounded-2xl border border-pink-500/30 text-left">
-        <p className="text-xs text-pink-300 font-bold mb-2">
-          {banner.label.split('あなた').join(displayName)}
-        </p>
-        {banner.htmlCode ? (
-          // A8.netなどが発行した「そのまま貼るコード」を、
-          // scriptタグも含めて正しく実行するためのコンポーネントです
-          <AdEmbed html={banner.htmlCode} />
-        ) : (
-          <a
-            href={banner.link}
-            target="_blank"
-            rel="noopener noreferrer sponsored"
-            className="block rounded-xl overflow-hidden"
-          >
-            <img
-              src={banner.imageSrc}
-              alt={banner.alt}
-              className="w-full h-auto rounded-xl"
-            />
-          </a>
-        )}
-      </div>
-    );
-  };
-
   const startDiagnosis = () => {
     if (
       !formData.year ||
@@ -164,7 +123,6 @@ export default function Home() {
       CHARACTERS.length;
     const selectedChar = CHARACTERS[charIdx];
 
-    // データから取得（ここがデータ反映の心臓部です）
     const text =
       FORTUNE_DATA[selectedChar.name]?.[formData.loveStatus]?.[
         formData.interest
@@ -210,7 +168,6 @@ export default function Home() {
               }
             >
               <option value="">年</option>
-              {/* 2006年から1966年まで降順で表示 */}
               {Array.from({ length: 41 }, (_, i) => 2006 - i).map((y) => (
                 <option key={y} value={y}>
                   {y}年
@@ -315,8 +272,6 @@ export default function Home() {
             </p>
           </div>
 
-          {renderBanner(firstBanner)}
-
           <div className="bg-[#2d2448] p-6 rounded-2xl border border-pink-500/30 text-left">
             <h3 className="text-center text-pink-300 font-bold mb-4 text-xl">
               📝 {displayName}へのアドバイス
@@ -326,9 +281,24 @@ export default function Home() {
                 ?.split('あなた')
                 .join(displayName)}
             </p>
-          </div>
 
-          {renderBanner(secondBanner)}
+            {/* ここから追加：電話占いサービスの案内 */}
+            <p className="text-sm text-gray-200 leading-relaxed mt-4">
+              私のおすすめは雷鳥さん。恋愛相談の実績豊富で、リピーターも多い先生よ。人気だから、予約できたらラッキーよ。
+            </p>
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              className="block w-full py-3 mt-3 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl font-bold text-center text-white"
+            >
+              初回3,000円分無料で相談する →
+            </a>
+            <p className="text-xs text-gray-400 mt-2 text-center">
+              ※電話占いサービスへのご案内です(PR)
+            </p>
+            {/* ここまで追加 */}
+          </div>
 
           <button
             onClick={() => setStatus('input')}
