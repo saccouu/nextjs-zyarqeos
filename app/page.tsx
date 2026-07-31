@@ -276,7 +276,7 @@ export default function Home() {
             <h3 className="text-center text-pink-300 font-bold mb-4 text-xl">
               📝 {displayName}へのアドバイス
             </h3>
-            <p className="text-sm text-gray-200 leading-relaxed">
+            <p className="text-sm text-gray-200 leading-relaxed whitespace-pre-line">
               {ADVICE_BY_STATUS[formData.loveStatus]
                 ?.split('あなた')
                 .join(displayName)}
