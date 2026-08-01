@@ -290,7 +290,7 @@ export default function Home() {
               />
             </div>
             <p className="text-xs text-gray-400 mt-2 text-center">
-              ※電話占いサービスへのご案内です(PR)
+              ※PR
             </p>
             {/* ここまで追加 */}
           </div>
