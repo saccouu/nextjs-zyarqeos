@@ -277,9 +277,9 @@ export default function Home() {
               📝 {displayName}へのアドバイス
             </h3>
             <p className="text-sm text-gray-200 leading-relaxed whitespace-pre-line">
-              {ADVICE_BY_STATUS[formData.loveStatus]
-                ?.split('あなた')
-                .join(displayName)}
+{ADVICE_BY_STATUS[formData.loveStatus]?.[formData.interest]
+  ?.split('あなた')
+  .join(displayName)}
             </p>
 
             {/* ここから追加：電話占いサービスの案内ボタン(文章はadvice.tsの中に含まれています) */}
