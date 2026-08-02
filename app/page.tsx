@@ -285,12 +285,12 @@ export default function Home() {
             {/* ここから追加：電話占いサービスの案内ボタン(文章はadvice.tsの中に含まれています) */}
             <div className="[&_a]:block [&_a]:w-full [&_a]:py-3 [&_a]:mt-3 [&_a]:bg-gradient-to-r [&_a]:from-pink-600 [&_a]:to-purple-600 [&_a]:rounded-xl [&_a]:font-bold [&_a]:text-center [&_a]:text-white [&_a]:no-underline">
               <AdEmbed
-                html={`<a href="https://px.a8.net/svt/ejp?a8mat=3Z4WIB+45GOHE+2PEO+HUKPU&a8ejpredirect=https%3A%2F%2Fcoconala.com%2Fservices%2F2030001%3Fref_kind%3Dcategory%26ref_no%3D1%26tr_v%3D2" rel="nofollow">初回3,000円分無料で相談してみる →</a>
+                html={`<a href="https://px.a8.net/svt/ejp?a8mat=3Z4WIB+45GOHE+2PEO+HUKPU&a8ejpredirect=https%3A%2F%2Fcoconala.com%2Fcategories%2F3%3Fservice_kind%3D1" rel="nofollow">初回3,000円分無料で相談してみる →</a>
 <img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=3Z4WIB+45GOHE+2PEO+HUKPU" alt="">`}
               />
             </div>
             <p className="text-xs text-gray-400 mt-2 text-center">
-              ※PR
+              ※電話占いのPRよ
             </p>
             {/* ここまで追加 */}
           </div>
