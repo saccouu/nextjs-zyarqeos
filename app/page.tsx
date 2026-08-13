@@ -290,7 +290,7 @@ export default function Home() {
               />
             </div>
             <p className="text-[10px] text-gray-200/50 mt-2 text-center">
-              ※プロの鑑定士による電話相談サービス(PR)です
+              ※プロの鑑定士による占いサービス(PR)です
             </p>
             {/* ここまで追加 */}
           </div>
