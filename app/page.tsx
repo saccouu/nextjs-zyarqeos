@@ -289,7 +289,7 @@ export default function Home() {
 <img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=3Z4WIB+45GOHE+2PEO+HUKPU" alt="">`}
               />
             </div>
-            <p className="text-xxs text-gray-200 mt-2 text-center">
+            <p className="text-[10px] text-gray-200/50 mt-2 text-center">
               ※プロの鑑定士による電話相談サービス（PR）です
             </p>
             {/* ここまで追加 */}
