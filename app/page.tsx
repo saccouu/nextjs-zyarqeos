@@ -48,7 +48,7 @@ const CHARACTERS = [
   {
     name: 'ひたむきなウサギ',
     emoji: '🐰',
-    desc: '寂しがり屋で甘え上手な、愛されキャラ。周囲との調和を大切にするわね。',
+    desc: '寂しがり屋で甘え上手な、愛されキャラ。周囲との調和を大切にする傾向があるわね。',
   },
   {
     name: '高嶺のネコ',
@@ -58,7 +58,7 @@ const CHARACTERS = [
   {
     name: '一途なイヌ',
     emoji: '🐶',
-    desc: 'すごく誠実で、パートナーを愛し抜く一途さを持っているわね。一度信頼を寄せると献身的に支えるわ。',
+    desc: 'すごく誠実で、パートナーを愛し抜く一途さを持っているわね。相手を献身的に支える良妻賢母タイプ。',
   },
   {
     name: '華やかなクジャク',
@@ -68,7 +68,7 @@ const CHARACTERS = [
   {
     name: '自由なイルカ',
     emoji: '🐬',
-    desc: '直感と感性を何よりも大切にする自由人。束縛を嫌うけど、深い絆を大切にするわ。',
+    desc: '直感と感性を何よりも大切にする自由人。束縛を嫌うけど、深い絆を大切にするタイプね。',
   },
   {
     name: '頼れるクマ',
@@ -78,7 +78,7 @@ const CHARACTERS = [
   {
     name: '知的なフクロウ',
     emoji: '🦉',
-    desc: '客観的に状況を分析する、冷静な知性派。感情に流されず将来性を見極めるわ。',
+    desc: '客観的に状況を分析する、冷静な知性派。感情に流されず将来性を見極める能力があるわ。',
   },
   {
     name: '純粋なシカ',
@@ -88,7 +88,7 @@ const CHARACTERS = [
   {
     name: '情熱のライオン',
     emoji: '🦁',
-    desc: '自信に満ちたリーダー気質。恋愛では相手を引っ張ることを好むわ。',
+    desc: '自信に満ちたリーダー気質。恋愛では相手を引っ張ることを好む傾向にあるわね。',
   },
 ];
 
@@ -265,7 +265,7 @@ export default function Home() {
 
           <div className="bg-[#2d2448] p-6 rounded-2xl border border-pink-500/30 text-left">
             <h3 className="text-center text-pink-300 font-bold mb-4 text-xl">
-              💬 {displayName}の占い結果
+              💬 {displayName}の診断結果
             </h3>
             <p className="text-sm text-gray-200 leading-relaxed">
               {result.text.split('あなた').join(displayName)}
