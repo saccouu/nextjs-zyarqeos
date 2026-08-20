@@ -237,14 +237,14 @@ export default function Home() {
             onClick={startDiagnosis}
             className="w-full py-4 bg-gradient-to-r from-pink-600 to-purple-600 rounded-2xl font-bold text-lg shadow-lg"
           >
-            ✨ 占いスタート ✨
+            ✨ 診断スタート ✨
           </button>
         </div>
       )}
 
       {status === 'loading' && (
         <div className="text-center space-y-4 pt-20">
-          <p>🔮 {displayName}の運勢を紐解いてるわ...</p>
+          <p>🔮 {displayName}の恋愛傾向を分析中...</p>
           <div className="w-64 h-3 bg-gray-700 rounded-full mx-auto overflow-hidden">
             <div className="h-full bg-pink-500 animate-[loading_3s_linear_forwards]"></div>
           </div>
