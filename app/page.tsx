@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
-import { FORTUNE_DATA } from '../src/data/fortuneData';
+import { FORTUNE_DATA, OTHER_RESULT_BY_STATUS } from '../src/data/fortuneData';
 import { ADVICE_BY_STATUS } from '../src/data/advice';
 
 // A8.netなど、<script>タグを含む「スクリプト実行型」の広告コードを
@@ -33,62 +33,62 @@ const CHARACTERS = [
   {
     name: '慈愛のパンダ',
     emoji: '🐼',
-    desc: '周囲を和ませる温かい心を持っているわ。争いを避け、調和を大切にする平和主義者よ。',
+    desc: '周囲を和ませる温かい心を持っているわ。\n争いを避け、調和を大切にする平和主義者よ。',
   },
   {
     name: '情熱のイノシシ',
     emoji: '🐗',
-    desc: '一度好きになると一直線に進む性格。行動力と情熱で相手を惹きつけるパワーがあるわよ。',
+    desc: '一度好きになると一直線に進む性格。\n行動力と情熱で相手を惹きつけるパワーがあるわよ。',
   },
   {
     name: '冷静なキツネ',
     emoji: '🦊',
-    desc: '鋭い観察眼で相手の心を見抜く力があるわ。駆け引きは得意だけど、素直になれずにチャンスを逃してしまうこともあるわよ。',
+    desc: '鋭い観察眼で相手の心を見抜く力があるわ。\n駆け引きは得意だけど、素直になれずにチャンスを逃してしまうこともあるわよ。',
   },
   {
     name: 'ひたむきなウサギ',
     emoji: '🐰',
-    desc: '寂しがり屋で甘え上手な、愛されキャラ。周囲との調和を大切にするわね。',
+    desc: '寂しがり屋で甘え上手な、愛されキャラ。\n周囲との調和を大切にするわね。',
   },
   {
     name: '高嶺のネコ',
-    emoji: '🐱',
-    desc: 'マイペースでミステリアスな魅力があるわ。ひとりの時間を大切にしているけど、寂しがりやの一面も。',
+    emoji: '🐈',
+    desc: 'マイペースでミステリアスな魅力があるわ。\nひとりの時間を大切にしているけど、寂しがりやの一面も。',
   },
   {
     name: '一途なイヌ',
-    emoji: '🐶',
-    desc: 'すごく誠実で、パートナーを愛し抜く一途さを持っているわね。一度信頼を寄せると献身的に支えるわ。',
+    emoji: '🐕',
+    desc: 'すごく誠実で、パートナーを愛し抜く一途さを持っているわね。\n一度信頼を寄せると献身的に支えるわ。',
   },
   {
     name: '華やかなクジャク',
     emoji: '🦚',
-    desc: '社交的で、その場の空気を明るくする華やかさを持ってるわね。強く見せているけど繊細な一面も。',
+    desc: '社交的で、その場の空気を明るくする華やかさを持ってるわね。\n強く見せているけど繊細な一面も。',
   },
   {
     name: '自由なイルカ',
     emoji: '🐬',
-    desc: '直感と感性を何よりも大切にする自由人。束縛を嫌うけど、深い絆を大切にするわ。',
+    desc: '直感と感性を何よりも大切にする自由人。\n束縛を嫌うけど、深い絆を大切にするわ。',
   },
   {
     name: '頼れるクマ',
     emoji: '🐻',
-    desc: '頼りがいがあって、周囲を優しく包み込む世話焼きタイプ。穏やかな恋愛を好むわ。',
+    desc: '頼りがいがあって、周囲を優しく包み込む世話焼きタイプ。\n穏やかな恋愛を好むわ。',
   },
   {
     name: '知的なフクロウ',
     emoji: '🦉',
-    desc: '客観的に状況を分析する、冷静な知性派。感情に流されず将来性を見極めるわ。',
+    desc: '客観的に状況を分析する、冷静な知性派。\n感情に流されず将来性を見極めるわ。',
   },
   {
     name: '純粋なシカ',
     emoji: '🦌',
-    desc: '感受性が人一倍強く、とても繊細でピュアな心を持ってるわね。その優しさに救われている人も多いわよ。',
+    desc: '感受性が人一倍強く、とても繊細でピュアな心を持ってるわね。\nその優しさに救われている人も多いわよ。',
   },
   {
     name: '情熱のライオン',
     emoji: '🦁',
-    desc: '自信に満ちたリーダー気質。恋愛では相手を引っ張ることを好むわ。',
+    desc: '自信に満ちたリーダー気質。\n恋愛では相手を引っ張ることを好むわ。',
   },
 ];
 
@@ -124,14 +124,26 @@ export default function Home() {
     const selectedChar = CHARACTERS[charIdx];
 
     const text =
-      FORTUNE_DATA[selectedChar.name]?.[formData.loveStatus]?.[
-        formData.interest
-      ] || 'ただいま診断中です...';
+      formData.interest === 'その他'
+        ? OTHER_RESULT_BY_STATUS[formData.loveStatus] || 'ただいま診断中です...'
+        : FORTUNE_DATA[selectedChar.name]?.[formData.loveStatus]?.[
+            formData.interest
+          ] || 'ただいま診断中です...';
 
     setResult({ char: selectedChar, text });
     setStatus('loading');
     setTimeout(() => setStatus('result'), 3000);
   };
+
+  const advice =
+    ADVICE_BY_STATUS[formData.loveStatus]?.[formData.interest];
+
+  const statusEmoji =
+    formData.loveStatus === 'フリー'
+      ? '💭'
+      : formData.loveStatus === '交際中'
+        ? '💗'
+        : '💔';
 
   return (
     <div className="min-h-screen bg-[#1a142d] text-white p-6 flex justify-center">
@@ -254,46 +266,55 @@ export default function Home() {
       {status === 'result' && (
         <div className="w-full max-w-sm space-y-6 pt-10 text-center">
           <div className="bg-[#2d2448] p-6 rounded-2xl border border-pink-500/30">
-            <p className="text-sm mb-1">💫 {displayName}の恋愛キャラ</p>
             <h2 className="text-xl font-bold text-pink-400">
-              {result.char.emoji} {result.char.name}
+              {result.char.emoji} {displayName}は「{result.char.name}」タイプ
             </h2>
-            <p className="text-sm text-gray-400 mt-2 italic">
+            <p className="text-sm text-gray-300 mt-3 leading-relaxed whitespace-pre-line">
               {result.char.desc}
             </p>
           </div>
 
           <div className="bg-[#2d2448] p-6 rounded-2xl border border-pink-500/30 text-left">
-            <h3 className="text-center text-pink-300 font-bold mb-4 text-xl">
-              💬 {displayName}の占い結果
+            <h3 className="text-pink-300 font-bold mb-4 text-xl">
+              {statusEmoji} 今の{displayName}へ
             </h3>
-            <p className="text-sm text-gray-200 leading-relaxed">
+            <p className="text-sm text-gray-100 leading-7 whitespace-pre-line">
               {result.text.split('あなた').join(displayName)}
             </p>
           </div>
 
-          <div className="bg-[#2d2448] p-6 rounded-2xl border border-pink-500/30 text-left">
-            <h3 className="text-center text-pink-300 font-bold mb-4 text-xl">
-              📝 {displayName}へのアドバイス
-            </h3>
-            <p className="text-sm text-gray-200 leading-relaxed whitespace-pre-line">
-{ADVICE_BY_STATUS[formData.loveStatus]?.[formData.interest]
-  ?.split('あなた')
-  .join(displayName)}
-            </p>
+          {advice && (
+            <div className="bg-[#2d2448] p-6 rounded-2xl border border-pink-500/30 text-left">
+              <h3 className="text-pink-300 font-bold mb-4 text-lg">
+                🔮 {advice.title}
+              </h3>
 
-            {/* ここから追加：電話占いサービスの案内ボタン(文章はadvice.tsの中に含まれています) */}
-            <div className="[&_a]:block [&_a]:w-full [&_a]:py-3 [&_a]:mt-3 [&_a]:bg-gradient-to-r [&_a]:from-pink-600 [&_a]:to-purple-600 [&_a]:rounded-xl [&_a]:font-bold [&_a]:text-center [&_a]:text-white [&_a]:no-underline">
-              <AdEmbed
-                html={`<a href="https://px.a8.net/svt/ejp?a8mat=3Z4WIB+45GOHE+2PEO+HUKPU&a8ejpredirect=https%3A%2F%2Fcoconala.com%2Fcategories%2F3%3Fservice_kind%3D1" rel="nofollow">初回3,000円分無料で見てもらう →</a>
+              <div className="space-y-2 mb-5">
+                {advice.questions.map((question) => (
+                  <p
+                    key={question}
+                    className="font-bold text-white leading-relaxed"
+                  >
+                    「{question}」
+                  </p>
+                ))}
+              </div>
+
+              <p className="text-sm text-gray-200 leading-relaxed mb-4">
+                {advice.closing.split('あなた').join(displayName)}
+              </p>
+
+              <div className="[&_a]:block [&_a]:w-full [&_a]:py-3 [&_a]:mt-3 [&_a]:bg-gradient-to-r [&_a]:from-pink-600 [&_a]:to-purple-600 [&_a]:rounded-xl [&_a]:font-bold [&_a]:text-center [&_a]:text-white [&_a]:no-underline">
+                <AdEmbed
+                  html={`<a href="https://px.a8.net/svt/ejp?a8mat=3Z4WIB+45GOHE+2PEO+HUKPU&a8ejpredirect=https%3A%2F%2Fcoconala.com%2Fcategories%2F3%3Fservice_kind%3D1" rel="nofollow">初回3,000円分無料で見てもらう →</a>
 <img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=3Z4WIB+45GOHE+2PEO+HUKPU" alt="">`}
-              />
+                />
+              </div>
+              <p className="text-[10px] text-gray-200/50 mt-2 text-center">
+                ※プロの鑑定士による占いサービス(PR)です
+              </p>
             </div>
-            <p className="text-[10px] text-gray-200/50 mt-2 text-center">
-              ※プロの鑑定士による占いサービス(PR)です
-            </p>
-            {/* ここまで追加 */}
-          </div>
+          )}
 
           <button
             onClick={() => setStatus('input')}
