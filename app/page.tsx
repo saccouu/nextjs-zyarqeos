@@ -139,7 +139,7 @@ export default function Home() {
         <div className="w-full max-w-md space-y-6">
           <div className="bg-[#2d2448] p-4 rounded-2xl border border-pink-500/30">
             <h1 className="text-xl font-bold text-center text-pink-400">
-              🔮 恋愛迷子のための恋愛診断
+              🔮 毒舌マダムの恋愛診断
             </h1>
             <p className="text-base text-pink-300 text-center mt-1">
               あなたの恋愛キャラも占うわよ
