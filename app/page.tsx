@@ -139,10 +139,10 @@ export default function Home() {
         <div className="w-full max-w-md space-y-6">
           <div className="bg-[#2d2448] p-4 rounded-2xl border border-pink-500/30">
             <h1 className="text-xl font-bold text-center text-pink-400">
-              🔮 毒舌マダムの恋愛診断
+              🔮 あなたは恋するとどのタイプ？
             </h1>
             <p className="text-base text-pink-300 text-center mt-1">
-              あなたの恋愛キャラも占うわよ
+              「恋愛キャラ」を診断するわよ💋
             </p>
           </div>
           <label className="text-sm text-pink-300 font-medium block">
