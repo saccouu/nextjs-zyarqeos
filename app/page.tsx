@@ -76,10 +76,11 @@ export default function LPPage() {
 
           <ul className="mt-5 divide-y divide-white/10">
             {[
-              "最近、彼からの連絡やLINEが減った・未読スルーされている",
+              "最近、彼からのLINEが減った",
+              "未読or既読スルーされている",
               "彼がどう思っているのか分からなくて不安",
               "別れた彼とやり直したい・復縁したい",
-              "このまま待ち続けていいのかハッキリさせたい",
+              "好きな人との関係をハッキリさせたい",
               "誰にも話せない秘密の恋をしている",
             ].map((item) => (
               <li key={item} className="flex gap-3 py-3 text-[15px] font-medium leading-7">
@@ -90,7 +91,7 @@ export default function LPPage() {
           </ul>
 
           <p className="mt-5 text-[15px] leading-7 text-gray-100">
-            ひとつでも当てはまるなら、
+            こんな悩みがあるなら、
             <span className="font-bold text-white">
               一人でずっと考え込まなくていいのよ。
             </span>
