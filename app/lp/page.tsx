@@ -140,25 +140,16 @@ export default function LPPage() {
           </h2>
 
           <p className="mt-5 text-[16px] font-medium leading-8 text-gray-100">
-            彼のSNSを何回見ても、
-            <br />
-            LINEを何回読み返しても、
-            <br />
+            彼のSNSを何回見ても、LINEを何回読み返しても、
             <span className="font-bold text-pink-300">
               男の本音は書いてないわよ。
             </span>
             <br />
             <br />
-            「彼はどう思ってるんだろう」って
-            <br />
-            一人で考え続けるより、
-            <br />
-            誰かに話した方が気持ちが整理できることもあるわ。
+            「彼はどう思ってるんだろう」って一人で考え続けるより、誰かに話した方が気持ちが整理できることもあるわ。
             <br />
             <br />
-            気になるなら、無料特典があるうちに
-            <br />
-            恋のモヤモヤを話してみなさい💋
+            気になるなら、無料特典があるうちに、恋のモヤモヤを話してみなさい💋
           </p>
 
           <div className="mt-5">
