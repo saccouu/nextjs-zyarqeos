@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
-import { FORTUNE_DATA } from '../src/data/fortuneData';
-import { ADVICE_BY_STATUS } from '../src/data/advice';
+import { FORTUNE_DATA } from '../../src/data/fortuneData';
+import { ADVICE_BY_STATUS } from '../../src/data/advice';
 
 // A8.netなど、<script>タグを含む「スクリプト実行型」の広告コードを
 // 正しく動かすための専用コンポーネントです。
