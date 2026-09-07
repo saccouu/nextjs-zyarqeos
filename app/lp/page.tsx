@@ -69,9 +69,8 @@ export default function LPPage() {
         </section>
 
         <section className="rounded-3xl border border-pink-500/30 bg-[#2d2448] p-6 shadow-xl">
-          <p className="mb-1 text-xs font-bold text-pink-300">こんな人へ</p>
           <h2 className="text-center text-2xl font-bold text-pink-300">
-            💭 ひとつでも当てはまる？
+            💭 こんな悩みがあるなら
           </h2>
 
           <ul className="mt-5 divide-y divide-white/10">
