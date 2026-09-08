@@ -232,12 +232,14 @@ export default function LPPage() {
             radial-gradient(circle at 50% 0%, rgba(160, 103, 201, .17), transparent 30%),
             var(--page-bg);
           font-family:
-            "Yu Mincho",
-            "Hiragino Mincho ProN",
-            "Hiragino Mincho Pro",
-            "Noto Serif JP",
-            Georgia,
-            serif;
+            -apple-system,
+            BlinkMacSystemFont,
+            "Hiragino Kaku Gothic ProN",
+            "Yu Gothic",
+            "YuGothic",
+            "Noto Sans JP",
+            "Segoe UI",
+            sans-serif;
           -webkit-font-smoothing: antialiased;
           text-rendering: optimizeLegibility;
         }
@@ -394,12 +396,14 @@ export default function LPPage() {
             0 10px 24px rgba(176, 42, 145, .26),
             inset 0 1px 0 rgba(255,255,255,.15);
           font-family:
-            "Yu Mincho",
-            "Hiragino Mincho ProN",
-            "Hiragino Mincho Pro",
-            "Noto Serif JP",
-            Georgia,
-            serif;
+            -apple-system,
+            BlinkMacSystemFont,
+            "Hiragino Kaku Gothic ProN",
+            "Yu Gothic",
+            "YuGothic",
+            "Noto Sans JP",
+            "Segoe UI",
+            sans-serif;
           font-size: 17px;
           line-height: 1.4;
           font-weight: 700;
