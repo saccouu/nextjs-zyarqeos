@@ -159,9 +159,10 @@ const PAGE_CSS = `:root{
     body{
       margin:0;
       background:
-        radial-gradient(circle at 50% -10%, rgba(157,44,242,.17), transparent 32%),
-        radial-gradient(circle at 18% 34%, rgba(94,49,128,.10), transparent 26%),
-        linear-gradient(180deg,#0b0712 0%,#171027 48%,#09060f 100%);
+        radial-gradient(circle at 50% -8%, rgba(188,150,221,.24), transparent 31%),
+        radial-gradient(circle at 12% 32%, rgba(142,100,177,.13), transparent 25%),
+        radial-gradient(circle at 90% 66%, rgba(214,190,136,.07), transparent 22%),
+        linear-gradient(180deg,#21162f 0%,#2b1c3d 48%,#1b1228 100%);
       color:var(--text);
       font-family:
         -apple-system,
@@ -183,11 +184,9 @@ const PAGE_CSS = `:root{
     }
 
     .page{
-      width:min(100%, 430px);
+      width:min(100%, 760px);
       margin:0 auto;
       padding:18px 20px 128px;
-      position:relative;
-      z-index:1;
     }
 
     .hero,
@@ -198,7 +197,8 @@ const PAGE_CSS = `:root{
       border-radius:var(--radius);
       box-shadow:
         var(--shadow),
-        inset 0 1px 0 rgba(232,205,145,.045);
+        inset 0 1px 0 rgba(255,255,255,.045),
+        0 0 0 1px rgba(215,187,126,.055);
     }
 
     .hero{
@@ -286,8 +286,8 @@ const PAGE_CSS = `:root{
       letter-spacing:.01em;
       box-shadow:
         0 10px 28px rgba(201,41,164,.28),
-        inset 0 1px 0 rgba(239,218,169,.14);
-      outline:1px solid rgba(210,180,112,.10);
+        inset 0 1px 0 rgba(239,220,180,.13);
+      outline:1px solid rgba(215,187,126,.08);
       transition:transform .16s ease, filter .16s ease;
     }
 
@@ -490,8 +490,8 @@ const PAGE_CSS = `:root{
       font-weight:900;
       box-shadow:
         0 12px 30px rgba(0,0,0,.34),
-        inset 0 1px 0 rgba(239,218,169,.12);
-      outline:1px solid rgba(210,180,112,.08);
+        inset 0 1px 0 rgba(239,220,180,.11);
+      outline:1px solid rgba(215,187,126,.07);
     }
 
     .mini-label{
@@ -532,33 +532,25 @@ const PAGE_CSS = `:root{
     }
   
 
-    /* 背景の控えめな星・光（文言には一切影響しません） */
     body::before{
       content:"";
       position:fixed;
       inset:0;
-      pointer-events:none;
       z-index:0;
-      opacity:.72;
+      pointer-events:none;
+      opacity:.58;
       background-image:
-        radial-gradient(circle, rgba(255,255,255,.88) 0 1px, transparent 1.7px),
-        radial-gradient(circle, rgba(232,205,145,.82) 0 1.1px, transparent 1.9px),
-        radial-gradient(circle, rgba(214,190,255,.60) 0 .9px, transparent 1.6px);
-      background-size:73px 91px,113px 137px,157px 181px;
-      background-position:8px 13px,37px 54px,76px 22px;
-      filter:drop-shadow(0 0 4px rgba(235,214,172,.24));
+        radial-gradient(circle, rgba(255,255,255,.78) 0 .8px, transparent 1.45px),
+        radial-gradient(circle, rgba(236,218,178,.62) 0 .85px, transparent 1.5px),
+        radial-gradient(circle, rgba(225,205,241,.56) 0 .7px, transparent 1.35px);
+      background-size:89px 107px,137px 163px,181px 211px;
+      background-position:11px 19px,49px 67px,83px 31px;
+      filter:drop-shadow(0 0 3px rgba(255,240,210,.16));
     }
 
-    .page::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      z-index:-1;
-      background:
-        radial-gradient(circle at 8% 7%, rgba(198,151,255,.15), transparent 19%),
-        radial-gradient(circle at 92% 23%, rgba(226,196,128,.10), transparent 17%),
-        radial-gradient(circle at 14% 72%, rgba(149,87,198,.10), transparent 20%);
+    .page{
+      position:relative;
+      z-index:1;
     }
 
     .hero{
@@ -571,15 +563,12 @@ const PAGE_CSS = `:root{
       position:absolute;
       inset:0;
       pointer-events:none;
-      opacity:.72;
+      opacity:.42;
       background-image:
-        radial-gradient(circle at 10% 16%, rgba(255,255,255,.92) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 87% 14%, rgba(232,205,145,.92) 0 1.2px, transparent 2px),
-        radial-gradient(circle at 76% 42%, rgba(255,255,255,.70) 0 .9px, transparent 1.7px),
-        radial-gradient(circle at 16% 61%, rgba(232,205,145,.72) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 91% 78%, rgba(216,194,255,.70) 0 1px, transparent 1.8px),
-        radial-gradient(circle at 31% 88%, rgba(255,255,255,.64) 0 .8px, transparent 1.6px);
-      filter:drop-shadow(0 0 5px rgba(235,214,172,.35));
+        radial-gradient(circle at 8% 12%, rgba(255,255,255,.76) 0 .8px, transparent 1.5px),
+        radial-gradient(circle at 91% 17%, rgba(237,217,173,.68) 0 .9px, transparent 1.6px),
+        radial-gradient(circle at 83% 55%, rgba(255,255,255,.54) 0 .7px, transparent 1.4px),
+        radial-gradient(circle at 13% 72%, rgba(232,213,247,.58) 0 .75px, transparent 1.45px);
     }
 
     .hero > *{
