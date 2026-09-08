@@ -37,9 +37,10 @@ export default function LPPage() {
             </h1>
 
             <div className="questions">
-              <p>「私のこと、どう思ってる？」</p>
-              <p>「また連絡は来る？」</p>
-              <p>「復縁できる可能性はある？」</p>
+            <p>「私のこと、どう思ってる？」</p>
+            <p>「また連絡は来る？」</p>
+            <p>「復縁できる可能性はある？」</p>
+            <p>「未読・既読スルーの本当の理由は？」</p>            
             </div>
 
             <p className="lead">
@@ -51,7 +52,7 @@ export default function LPPage() {
               一人で答えを探し続けるくらいなら、
               <br />
               <strong>
-                恋愛の悩みを占い師に相談してみなさい。
+                プロの恋愛占い師に相談してみなさい。
               </strong>
             </p>
 
@@ -76,16 +77,17 @@ export default function LPPage() {
             <p className="small-label">こんな人へ</p>
 
             <h2>
-              💭 ひとつでも当てはまる？
+              💭 こんな悩みがあるなら
             </h2>
 
             <ul className="check-list">
               {[
-                "最近、彼からの連絡が減った",
-                "彼がどう思っているのか分からない",
-                "別れた彼と復縁したい",
-                "このまま待っていていいのか不安",
-                "誰にも話せない恋をしている",
+              "最近、彼からのLINEが減った",
+              "未読or既読スルーされている",
+              "彼がどう思っているのか分からなくて不安",
+              "別れた彼とやり直したい・復縁したい",
+              "好きな人との関係をハッキリさせたい",
+              "誰にも話せない秘密の恋をしている",
               ].map((item) => (
                 <li key={item}>
                   <span className="check">✓</span>
@@ -95,7 +97,7 @@ export default function LPPage() {
             </ul>
 
             <p className="body-copy">
-              ひとつでも当てはまるなら、
+              こんな悩みがあるなら、
               <strong>
                 一人でずっと考え込まなくていいのよ。
               </strong>
@@ -151,25 +153,17 @@ export default function LPPage() {
             </h2>
 
             <p className="madam-copy">
-              彼のSNSを何回見ても、
-              <br />
-              LINEを何回読み返しても、
-              <br />
+              彼のSNSを何回見ても、LINEを何回読み返しても、
               <strong>
                 男の本音は書いてないわよ。
               </strong>
               <br />
               <br />
-              「彼はどう思ってるんだろう」って
-              <br />
-              一人で考え続けるより、
-              <br />
+              「彼はどう思ってるんだろう」って一人で考え続けるより、
               誰かに話した方が気持ちが整理できることもあるわ。
               <br />
               <br />
-              気になるなら、無料特典があるうちに
-              <br />
-              恋のモヤモヤを話してみなさい💋
+              気になるなら、無料特典があるうちに恋のモヤモヤを話してみなさい💋             
             </p>
 
             <AffiliateButton>
