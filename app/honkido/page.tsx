@@ -21,9 +21,9 @@ const questions: Record<Status, Question[]> = {
   dating: [
     { title:"会うために、彼からも動いてくれる？", note:"本気の男はね、会いたいを「行動」にするのよ💋", answers:[
       {label:"彼から誘ったり予定を決めたりしてくれる",score:2},{label:"私から誘うことの方が多い",score:1},{label:"ほぼ私が動かないと会えない",score:0}]},
-    { title:"忙しい時の彼はどう？", note:"忙しいかどうかより、忙しい時にあなたをどう扱うかを見なさい", answers:[
+    { title:"忙しい時の彼はどう？", note:"忙しいかどうかより、忙しい時にあなたをどう扱うかを見なさい💋", answers:[
       {label:"連絡が減っても、あとで連絡や埋め合わせがある",score:2},{label:"忙しくなるとかなり連絡が減る",score:1},{label:"「忙しい」で何日も放置されることがある",score:0}]},
-    { title:"あなたの話を覚えてる？", note:"こういう無意識なところに、男の本音は出るわよ", answers:[
+    { title:"あなたの話を覚えてる？", note:"こういう無意識なところに、男の本音は出るわよ💋", answers:[
       {label:"小さなことまで意外と覚えてる",score:2},{label:"大事なことなら覚えてる",score:1},{label:"前に話したことをほとんど覚えてない",score:0}]},
     { title:"会う日時や場所はどう決まる？", note:"愛されてるかより先に、雑に扱われてないかを見なさい💋", answers:[
       {label:"私の都合も聞いて一緒に決める",score:2},{label:"彼に合わせることが多いけど、お互い様",score:1},{label:"ほぼいつも彼の都合に合わせてる",score:0}]},
@@ -102,6 +102,7 @@ export default function HonkidoPage() {
   const [step,setStep]=useState(0);
   const [answers,setAnswers]=useState<Answer[]>([]);
   const [selected,setSelected]=useState<string|null>(null);
+  const [selectedStatus,setSelectedStatus]=useState<Status|null>(null);
 
   const qs=status?questions[status]:[];
   const finished=!!status && step>=qs.length;
@@ -111,6 +112,17 @@ export default function HonkidoPage() {
     const band=score>=11?"high":score>=6?"mid":"low";
     return results[status][band];
   },[score,status]);
+
+  const pickStatus=(nextStatus:Status)=>{
+    if(selectedStatus)return;
+    setSelectedStatus(nextStatus);
+    setTimeout(()=>{
+      setStarted(true);
+      setStatus(nextStatus);
+      setSelectedStatus(null);
+      window.scrollTo({top:0,behavior:"smooth"});
+    },400);
+  };
 
   const pick=(a:Answer)=>{
     if(selected)return;
@@ -124,21 +136,26 @@ export default function HonkidoPage() {
   };
 
   const reset=()=>{
-    setStarted(false); setStatus(null); setStep(0); setAnswers([]); setSelected(null);
+    setStarted(false); setStatus(null); setStep(0); setAnswers([]); setSelected(null); setSelectedStatus(null);
     window.scrollTo({top:0,behavior:"smooth"});
   };
 
   return <>
     <main className="page">
-      <div className="sparkles" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i><i>✦</i><i>✧</i></div>
+      <div className="sparkles" aria-hidden="true">
+        {Array.from({length:24}).map((_,i)=><i key={i}>{i%3===0?"✦":"✧"}</i>)}
+      </div>
 
       {!started ? <section className="panel hero"><div className="panel-content">
         <p className="eyebrow">💋 ruby_bba｜男の本音チェック</p>
         <h1>彼って、私のこと<br/><span className="gold">本気？</span></h1>
-        <p className="lead">男の本気は「好き」という言葉より、<br/><strong>行動に出るものよ💋</strong><br/><br/>まずは、あなたと彼の<br/>今の関係を教えなさい。</p>
+        <p className="lead">彼の本気度、これから7問で<br/><strong>チェックしていくわよ💋</strong><br/><br/>まずは、あなたと彼の<br/>今の関係を教えなさい。</p>
         <div className="badges"><span>無料</span><span>7問</span><span>約1分</span></div>
         <div className="status-buttons hero-status">
-          {(Object.keys(statusLabels) as Status[]).map(k=><button key={k} onClick={()=>{setStarted(true);setStatus(k);}}><strong>{statusLabels[k]}</strong><span>›</span></button>)}
+          {(Object.keys(statusLabels) as Status[]).map(k=>{
+            const active=selectedStatus===k;
+            return <button key={k} className={active?"selected":""} disabled={!!selectedStatus} onClick={()=>pickStatus(k)}><strong>{statusLabels[k]}</strong><span>{active?"✓":"›"}</span></button>
+          })}
         </div>
         <p className="fineprint">※恋愛傾向を確認するための簡易チェックです。<br/>相手の実際の気持ちを断定するものではありません。</p>
       </div></section>
@@ -155,11 +172,11 @@ export default function HonkidoPage() {
             <span>{a.label}</span><b>{active?"✓":"›"}</b>
           </button>
         })}</div>
-        <p className="madam-note">💋 {qs[step].note}</p>
+        <p className="madam-note">{qs[step].note}</p>
       </div></section>
       : result ? <>
         <section className="panel result"><div className="panel-content">
-          <p className="eyebrow">💋 ルビーの診断結果</p>
+          <p className="eyebrow">💋診断結果</p>
           <div className="result-icon">{result.icon}</div>
           <h1 className="result-title">{result.title}</h1>
           <p className="result-copy">{result.copy}</p>
@@ -188,9 +205,15 @@ export default function HonkidoPage() {
       *{box-sizing:border-box} html,body{margin:0;background:#171128;color:#fffafc}
       body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif}
       button{font:inherit}.page{position:relative;width:100%;max-width:448px;min-height:100vh;margin:0 auto;padding:22px 16px 42px;overflow:hidden}
-      .sparkles{position:fixed;inset:0;pointer-events:none;z-index:2}.sparkles i{position:absolute;color:rgba(255,224,143,.72);font-style:normal;text-shadow:0 0 10px rgba(255,214,112,.65);animation:twinkle 2.8s ease-in-out infinite}
-      .sparkles i:nth-child(1){top:7%;left:8%}.sparkles i:nth-child(2){top:15%;right:9%;animation-delay:.7s}.sparkles i:nth-child(3){top:42%;left:4%;animation-delay:1.2s}
-      .sparkles i:nth-child(4){top:56%;right:5%;font-size:18px}.sparkles i:nth-child(5){top:78%;left:10%;animation-delay:1.6s}.sparkles i:nth-child(6){top:88%;right:11%;animation-delay:2s}
+      .sparkles{position:fixed;inset:0;pointer-events:none;z-index:2}.sparkles i{position:absolute;color:rgba(255,229,158,.82);font-style:normal;text-shadow:0 0 11px rgba(255,214,112,.75);animation:twinkle 2.4s ease-in-out infinite}
+      .sparkles i:nth-child(1){top:4%;left:7%}.sparkles i:nth-child(2){top:9%;left:28%;font-size:9px;animation-delay:.4s}.sparkles i:nth-child(3){top:6%;right:10%;animation-delay:1.1s}
+      .sparkles i:nth-child(4){top:16%;left:4%;font-size:10px;animation-delay:.7s}.sparkles i:nth-child(5){top:19%;right:5%;font-size:15px;animation-delay:1.5s}.sparkles i:nth-child(6){top:27%;left:12%;animation-delay:.2s}
+      .sparkles i:nth-child(7){top:31%;right:15%;font-size:9px;animation-delay:1.9s}.sparkles i:nth-child(8){top:38%;left:3%;font-size:17px;animation-delay:1.2s}.sparkles i:nth-child(9){top:41%;right:4%;animation-delay:.5s}
+      .sparkles i:nth-child(10){top:48%;left:8%;font-size:9px;animation-delay:1.7s}.sparkles i:nth-child(11){top:52%;right:12%;font-size:16px;animation-delay:.8s}.sparkles i:nth-child(12){top:58%;left:4%;animation-delay:2s}
+      .sparkles i:nth-child(13){top:62%;right:4%;font-size:10px;animation-delay:.3s}.sparkles i:nth-child(14){top:68%;left:13%;font-size:15px;animation-delay:1.4s}.sparkles i:nth-child(15){top:72%;right:17%;font-size:9px;animation-delay:.9s}
+      .sparkles i:nth-child(16){top:77%;left:5%;animation-delay:1.8s}.sparkles i:nth-child(17){top:81%;right:6%;font-size:18px;animation-delay:.6s}.sparkles i:nth-child(18){top:86%;left:18%;font-size:9px;animation-delay:1.3s}
+      .sparkles i:nth-child(19){top:90%;right:20%;animation-delay:2.1s}.sparkles i:nth-child(20){top:94%;left:6%;font-size:14px;animation-delay:.1s}.sparkles i:nth-child(21){top:13%;left:48%;font-size:8px;animation-delay:1.6s}
+      .sparkles i:nth-child(22){top:35%;left:51%;font-size:8px;animation-delay:.9s}.sparkles i:nth-child(23){top:66%;left:48%;font-size:8px;animation-delay:1.3s}.sparkles i:nth-child(24){top:92%;left:52%;font-size:8px;animation-delay:.5s}
       @keyframes twinkle{0%,100%{opacity:.2;transform:scale(.8)}50%{opacity:.9;transform:scale(1.2)}}
       .panel,.notice,footer,.retry{position:relative;z-index:3}.panel{margin-bottom:18px;padding:27px 20px;border:1px solid rgba(230,201,120,.3);border-radius:22px;background:
       radial-gradient(circle at 10% 12%,rgba(255,229,158,.72) 0 1px,transparent 1.8px),
@@ -203,7 +226,7 @@ export default function HonkidoPage() {
       .badges{display:flex;justify-content:center;gap:8px;margin:22px 0 2px}.badges span{padding:6px 12px;border:1px solid rgba(230,201,120,.35);border-radius:999px;color:#e6c978;font-size:12px;font-weight:700}
       .cta{display:flex;align-items:center;justify-content:center;width:100%;min-height:60px;margin-top:16px;padding:14px;border:1px solid rgba(230,201,120,.42);border-radius:17px;color:white;background:linear-gradient(100deg,#dd2b7f,#c734a0 46%,#8d35c8);font-size:17px;font-weight:800;text-decoration:none;text-align:center;cursor:pointer}
       .fineprint{margin:12px 0 0;color:#aaa0b3;font-size:10px;line-height:1.7;text-align:center}.status-buttons{display:grid;gap:12px;margin-top:20px}.hero-status{margin-top:20px}.status-buttons button,.answers button{display:flex;justify-content:space-between;align-items:center;width:100%;padding:17px 16px;border:1px solid rgba(255,255,255,.14);border-radius:15px;color:white;background:rgba(17,10,28,.32);text-align:left;cursor:pointer}
-      .status-buttons strong{font-size:15px}.status-buttons span,.answers b{color:#e6c978;font-size:24px}.quiz{min-height:580px}.progress-head{display:flex;justify-content:space-between;color:#f3d4e5;font-size:13px;font-weight:700}
+      .status-buttons strong{font-size:15px}.status-buttons span,.answers b{color:#e6c978;font-size:24px}.status-buttons button{transition:.18s}.status-buttons button:disabled{cursor:default;opacity:.65}.status-buttons button.selected{opacity:1;border-color:#ff82c3;background:linear-gradient(100deg,rgba(221,43,127,.9),rgba(141,53,200,.9));box-shadow:0 0 24px rgba(221,43,127,.38);transform:scale(1.01)}.status-buttons button.selected span{color:#fff}.quiz{min-height:580px}.progress-head{display:flex;justify-content:space-between;color:#f3d4e5;font-size:13px;font-weight:700}
       .progress{height:7px;margin:10px 0 20px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden}.progress div{height:100%;background:linear-gradient(90deg,#dd2b7f,#e6c978);transition:width .3s}
       .status-chip{display:inline-block;margin:0 0 18px;padding:5px 9px;border:1px solid rgba(230,201,120,.25);border-radius:999px;color:#d9c78e;font-size:10px}.q-label{margin:0 0 8px;color:#e6c978;font-size:11px;font-weight:800;letter-spacing:.12em}
       .question-title{min-height:68px;margin:0 0 24px;font-size:23px;line-height:1.55;font-weight:900}.answers{display:grid;gap:11px}.answers button{font-size:15px;font-weight:650;transition:.18s}.answers button:disabled{cursor:default;opacity:.65}
