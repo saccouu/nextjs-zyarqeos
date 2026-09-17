@@ -176,7 +176,7 @@ export default function HonkidoPage() {
       </div></section>
       : result ? <>
         <section className="panel result"><div className="panel-content">
-          <p className="eyebrow">💋診断結果</p>
+          <p className="eyebrow">💋 診断結果</p>
           <div className="result-icon">{result.icon}</div>
           <h1 className="result-title">{result.title}</h1>
           <p className="result-copy">{result.copy}</p>
@@ -185,8 +185,8 @@ export default function HonkidoPage() {
         <section className="panel"><div className="panel-content">
           <div className="pr">PR</div>
           <h2 className="pr-title">でも、この診断では、<br/><span>彼の本当の気持ちまでは分からないわ。</span></h2>
-          <p className="body-copy">この診断で分かるのは、彼の<br/><strong>「行動に出ている本気サイン」</strong>まで。<br/><br/>
-          でも、あなたが本当に知りたいのは、<br/><strong>「彼は私のことをどう思ってる？」</strong><br/>じゃないかしら？<br/><br/>
+          <p className="body-copy">この診断で分かるのは、彼の<strong>「行動に出ている本気サイン」</strong>まで。<br/><br/>
+          でも、あなたが本当に知りたいのは、<strong>「彼は私のことをどう思ってる？」</strong>じゃないかしら？<br/><br/>
           <em>{bridge[status]}</em><br/><br/>
           彼の本音まで知りたいなら、最近のLINEや二人の状況も含めて、個別に見てもらう方法もあるわよ💋</p>
           <p className="offer">＼ 初回 <span>3,000円分無料</span> ／</p>
