@@ -137,17 +137,12 @@ export default function HonkidoPage() {
         <h1>彼って、私のこと<br/><span className="gold">本気？</span></h1>
         <p className="lead">男の本気は「好き」という言葉より、<br/><strong>行動に出るものよ💋</strong><br/><br/>まずは、あなたと彼の<br/>今の関係を教えなさい。</p>
         <div className="badges"><span>無料</span><span>7問</span><span>約1分</span></div>
-        <button className="cta" onClick={()=>setStarted(true)}>💋 彼の本気度をチェックする</button>
+        <div className="status-buttons hero-status">
+          {(Object.keys(statusLabels) as Status[]).map(k=><button key={k} onClick={()=>{setStarted(true);setStatus(k);}}><strong>{statusLabels[k]}</strong><span>›</span></button>)}
+        </div>
         <p className="fineprint">※恋愛傾向を確認するための簡易チェックです。<br/>相手の実際の気持ちを断定するものではありません。</p>
       </div></section>
-      : !status ? <section className="panel relationship"><div className="panel-content">
-        <p className="eyebrow">💋 まずはここから</p>
-        <h1>あなたと彼の<br/><span className="gold">今の関係は？</span></h1>
-        <p className="lead small">一番近いものを選びなさい。</p>
-        <div className="status-buttons">
-          {(Object.keys(statusLabels) as Status[]).map(k=><button key={k} onClick={()=>setStatus(k)}><strong>{statusLabels[k]}</strong><span>›</span></button>)}
-        </div>
-      </div></section>
+      : !status ? null
       : !finished ? <section className="panel quiz"><div className="panel-content">
         <div className="progress-head"><span>彼の本気度チェック💋</span><strong>{step+1} / 7</strong></div>
         <div className="progress"><div style={{width:`${((step+1)/7)*100}%`}}/></div>
@@ -193,16 +188,21 @@ export default function HonkidoPage() {
       *{box-sizing:border-box} html,body{margin:0;background:#171128;color:#fffafc}
       body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif}
       button{font:inherit}.page{position:relative;width:100%;max-width:448px;min-height:100vh;margin:0 auto;padding:22px 16px 42px;overflow:hidden}
-      .sparkles{position:fixed;inset:0;pointer-events:none}.sparkles i{position:absolute;color:rgba(230,201,120,.42);font-style:normal;animation:twinkle 2.8s ease-in-out infinite}
+      .sparkles{position:fixed;inset:0;pointer-events:none;z-index:2}.sparkles i{position:absolute;color:rgba(255,224,143,.72);font-style:normal;text-shadow:0 0 10px rgba(255,214,112,.65);animation:twinkle 2.8s ease-in-out infinite}
       .sparkles i:nth-child(1){top:7%;left:8%}.sparkles i:nth-child(2){top:15%;right:9%;animation-delay:.7s}.sparkles i:nth-child(3){top:42%;left:4%;animation-delay:1.2s}
       .sparkles i:nth-child(4){top:56%;right:5%;font-size:18px}.sparkles i:nth-child(5){top:78%;left:10%;animation-delay:1.6s}.sparkles i:nth-child(6){top:88%;right:11%;animation-delay:2s}
       @keyframes twinkle{0%,100%{opacity:.2;transform:scale(.8)}50%{opacity:.9;transform:scale(1.2)}}
-      .panel,.notice,footer,.retry{position:relative;z-index:1}.panel{margin-bottom:18px;padding:27px 20px;border:1px solid rgba(230,201,120,.3);border-radius:22px;background:linear-gradient(180deg,#392954,#2d2448);box-shadow:0 16px 36px rgba(0,0,0,.24)}
-      .hero,.relationship{min-height:560px;display:flex;align-items:center;text-align:center}.panel-content{width:100%}.eyebrow{margin:0 0 10px;color:#f4d7e8;font-size:14px;font-weight:800}
+      .panel,.notice,footer,.retry{position:relative;z-index:3}.panel{margin-bottom:18px;padding:27px 20px;border:1px solid rgba(230,201,120,.3);border-radius:22px;background:
+      radial-gradient(circle at 10% 12%,rgba(255,229,158,.72) 0 1px,transparent 1.8px),
+      radial-gradient(circle at 88% 18%,rgba(255,255,255,.55) 0 1px,transparent 1.8px),
+      radial-gradient(circle at 16% 68%,rgba(255,229,158,.45) 0 1px,transparent 1.8px),
+      radial-gradient(circle at 91% 77%,rgba(255,255,255,.45) 0 1px,transparent 1.8px),
+      linear-gradient(180deg,#392954,#2d2448);box-shadow:0 16px 36px rgba(0,0,0,.24)}
+      .hero,.relationship{min-height:620px;display:flex;align-items:center;text-align:center}.panel-content{width:100%}.eyebrow{margin:0 0 10px;color:#f4d7e8;font-size:14px;font-weight:800}
       h1{margin:0;font-size:32px;line-height:1.3;font-weight:900}.gold{color:#e6c978}.lead{margin:24px 0 0;font-size:16px;line-height:1.9}.lead.small{font-size:14px}
       .badges{display:flex;justify-content:center;gap:8px;margin:22px 0 2px}.badges span{padding:6px 12px;border:1px solid rgba(230,201,120,.35);border-radius:999px;color:#e6c978;font-size:12px;font-weight:700}
       .cta{display:flex;align-items:center;justify-content:center;width:100%;min-height:60px;margin-top:16px;padding:14px;border:1px solid rgba(230,201,120,.42);border-radius:17px;color:white;background:linear-gradient(100deg,#dd2b7f,#c734a0 46%,#8d35c8);font-size:17px;font-weight:800;text-decoration:none;text-align:center;cursor:pointer}
-      .fineprint{margin:12px 0 0;color:#aaa0b3;font-size:10px;line-height:1.7;text-align:center}.status-buttons{display:grid;gap:12px;margin-top:20px}.status-buttons button,.answers button{display:flex;justify-content:space-between;align-items:center;width:100%;padding:17px 16px;border:1px solid rgba(255,255,255,.14);border-radius:15px;color:white;background:rgba(17,10,28,.32);text-align:left;cursor:pointer}
+      .fineprint{margin:12px 0 0;color:#aaa0b3;font-size:10px;line-height:1.7;text-align:center}.status-buttons{display:grid;gap:12px;margin-top:20px}.hero-status{margin-top:20px}.status-buttons button,.answers button{display:flex;justify-content:space-between;align-items:center;width:100%;padding:17px 16px;border:1px solid rgba(255,255,255,.14);border-radius:15px;color:white;background:rgba(17,10,28,.32);text-align:left;cursor:pointer}
       .status-buttons strong{font-size:15px}.status-buttons span,.answers b{color:#e6c978;font-size:24px}.quiz{min-height:580px}.progress-head{display:flex;justify-content:space-between;color:#f3d4e5;font-size:13px;font-weight:700}
       .progress{height:7px;margin:10px 0 20px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden}.progress div{height:100%;background:linear-gradient(90deg,#dd2b7f,#e6c978);transition:width .3s}
       .status-chip{display:inline-block;margin:0 0 18px;padding:5px 9px;border:1px solid rgba(230,201,120,.25);border-radius:999px;color:#d9c78e;font-size:10px}.q-label{margin:0 0 8px;color:#e6c978;font-size:11px;font-weight:800;letter-spacing:.12em}
