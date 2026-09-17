@@ -147,8 +147,8 @@ export default function HonkidoPage() {
       </div>
 
       {!started ? <section className="panel hero"><div className="panel-content">
-        <p className="eyebrow">💋 ruby_bba｜男の本音チェック</p>
-        <h1>彼って、私のこと<br/><span className="gold">本気？</span></h1>
+        <p className="eyebrow">💋 ruby_bba</p>
+        <h1>彼の<span className="gold">本気度チェック</span></h1>
         <p className="lead">彼の本気度、これから7問で<br/><strong>チェックしていくわよ💋</strong><br/><br/>まずは、あなたと彼の<br/>今の関係を教えなさい。</p>
         <div className="badges"><span>無料</span><span>7問</span><span>約1分</span></div>
         <div className="status-buttons hero-status">
