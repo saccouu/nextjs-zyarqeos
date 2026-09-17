@@ -149,8 +149,7 @@ export default function HonkidoPage() {
       {!started ? <section className="panel hero"><div className="panel-content">
         <p className="eyebrow">💋 ruby_bba</p>
         <h1>彼の<span className="gold">本気度チェック</span></h1>
-        <p className="lead">彼の本気度、これから7問で<br/><strong>チェックしていくわよ💋</strong><br/><br/>まずは、あなたと彼の<br/>今の関係を教えなさい。</p>
-        <div className="badges"><span>無料</span><span>7問</span><span>約1分</span></div>
+        <p className="lead">これから7問で<strong>チェック</strong>していくわよ💋<br/><br/>まずは、あなたと彼の今の関係を教えなさい。</p>
         <div className="status-buttons hero-status">
           {(Object.keys(statusLabels) as Status[]).map(k=>{
             const active=selectedStatus===k;
