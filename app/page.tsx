@@ -86,11 +86,23 @@ const results = {
   },
 } as const;
 
-const bridge: Record<Status,string> = {
-  dating:"「私との将来まで考えてる？」",
-  crush:"「私のこと、恋愛対象として見てる？」",
-  ambiguous:"「私との関係、これからどうするつもり？」",
-};
+const bridge = {
+  dating: {
+    high: ["「彼は私との将来をどう考えてる？」","「結婚まで考えてる？」","「今、私に言えてない本音はある？」"],
+    mid: ["「彼は私のことを本当はどう思ってる？」","「この先も付き合っていく気はある？」","「彼の気持ちは冷めてる？」"],
+    low: ["「彼の気持ちは冷めてる？」","「別れを考えてる？」","「他に好きな人がいる？」"],
+  },
+  crush: {
+    high: ["「彼も私を好き？」","「付き合いたいと思ってる？」","「いつ関係が進みそう？」"],
+    mid: ["「私のことをどう思ってる？」","「恋愛対象として見てる？」","「他に気になる人がいる？」"],
+    low: ["「脈なしなの？」","「この先、恋愛対象になる可能性はある？」","「彼には好きな人がいる？」"],
+  },
+  ambiguous: {
+    high: ["「彼は私と付き合いたいと思ってる？」","「なぜ関係をはっきりさせないの？」","「この先、関係を進める気はある？」"],
+    mid: ["「彼は私をどういう存在だと思ってる？」","「本命として見てる？」","「この関係をどうするつもり？」"],
+    low: ["「私って都合のいい存在？」","「彼に付き合う気はある？」","「他に本命がいる？」"],
+  },
+} as const;
 
 function AffiliateButton({children}:{children:React.ReactNode}) {
   return <a href={AFFILIATE_URL} rel="nofollow sponsored" className="cta">{children}</a>;
@@ -107,11 +119,11 @@ export default function HonkidoPage() {
   const qs=status?questions[status]:[];
   const finished=!!status && step>=qs.length;
   const score=useMemo(()=>answers.reduce((s,a)=>s+a.score,0),[answers]);
+  const band=score>=11?"high":score>=6?"mid":"low";
   const result=useMemo(()=>{
     if(!status)return null;
-    const band=score>=11?"high":score>=6?"mid":"low";
     return results[status][band];
-  },[score,status]);
+  },[band,status]);
 
   const pickStatus=(nextStatus:Status)=>{
     if(selectedStatus)return;
@@ -183,11 +195,17 @@ export default function HonkidoPage() {
 
         <section className="panel"><div className="panel-content">
           <div className="pr">PR</div>
-          <h2 className="pr-title">でも、この診断では、<br/><span>彼の本当の気持ちまでは分からないわ。</span></h2>
-          <p className="body-copy">この診断で分かるのは、彼の<strong>「行動に出ている本気サイン」</strong>まで。<br/><br/>
-          でも、あなたが本当に知りたいのは、<strong>「彼は私のことをどう思ってる？」</strong>じゃないかしら？<br/><br/>
-          <em>{bridge[status]}</em><br/><br/>
-          彼の本音まで知りたいなら、最近のLINEや二人の状況も含めて、個別に見てもらう方法もあるわよ💋</p>
+          <h2 className="pr-title">ただ、この診断では、<br/><span>彼の本当の気持ちまでは分からないわ。</span></h2>
+          <div className="body-copy">
+            <div style={{display:"grid",gap:"10px",marginBottom:"20px"}}>
+              {bridge[status][band].map((question)=>(
+                <strong key={question} style={{display:"block",color:"#ff9dce",fontSize:"16px",lineHeight:"1.6"}}>
+                  {question}
+                </strong>
+              ))}
+            </div>
+            <p style={{margin:0}}>ここまで知りたいなら、今の状況を詳しく相談して、個別に見てもらう方法もあるわよ💋</p>
+          </div>
           <p className="offer">＼ 初回 <span>3,000円分無料</span> ／</p>
           <AffiliateButton>🔮 彼の気持ちを占ってもらう →</AffiliateButton>
           <p className="fineprint">※PR：リンク先のサービスをご紹介しています。<br/>※無料特典の適用条件・対象サービス等はリンク先をご確認ください。<br/>※占い・相談の結果は将来や相手の気持ちを保証するものではありません。</p>
