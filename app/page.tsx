@@ -195,11 +195,13 @@ export default function HonkidoPage() {
 
         <section className="panel"><div className="panel-content">
           <div className="pr">PR</div>
-          <h2 className="pr-title">ただ、この診断では、<br/><span>彼の本当の気持ちまでは分からないわ。</span></h2>
           <div className="body-copy">
-            <div style={{display:"grid",gap:"10px",marginBottom:"20px"}}>
+            <p style={{margin:"0 0 18px"}}>
+              この診断で分かるのは、彼の<strong>「行動に出ている本気サイン」</strong>まで。
+            </p>
+            <div style={{display:"grid",gap:"4px",marginBottom:"20px"}}>
               {bridge[status][band].map((question)=>(
-                <strong key={question} style={{display:"block",color:"#ff9dce",fontSize:"16px",lineHeight:"1.6"}}>
+                <strong key={question} style={{display:"block",color:"#ff9dce",fontSize:"16px",lineHeight:"1.45"}}>
                   {question}
                 </strong>
               ))}
