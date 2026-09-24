@@ -220,7 +220,7 @@ export default function HonkidoPage() {
     </main>
 
     <style>{`
-      *{box-sizing:border-box} html,body{margin:0;background:#F5EFE6;color:#fffafc}
+      *{box-sizing:border-box} html,body{margin:0;background:#171128;color:#fffafc}
       body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif}
       button{font:inherit}.page{position:relative;width:100%;max-width:448px;min-height:100vh;margin:0 auto;padding:22px 16px 42px;overflow:hidden}
       .sparkles{position:fixed;inset:0;pointer-events:none;z-index:2}.sparkles i{position:absolute;color:rgba(255,229,158,.82);font-style:normal;text-shadow:0 0 11px rgba(255,214,112,.75);animation:twinkle 2.4s ease-in-out infinite}
@@ -238,7 +238,7 @@ export default function HonkidoPage() {
       radial-gradient(circle at 88% 18%,rgba(255,255,255,.55) 0 1px,transparent 1.8px),
       radial-gradient(circle at 16% 68%,rgba(255,229,158,.45) 0 1px,transparent 1.8px),
       radial-gradient(circle at 91% 77%,rgba(255,255,255,.45) 0 1px,transparent 1.8px),
-      linear-gradient(180deg,#5C2233,#EDE3D3);box-shadow:0 16px 36px rgba(0,0,0,.24)}
+      linear-gradient(180deg,#392954,#2d2448);box-shadow:0 16px 36px rgba(0,0,0,.24)}
       .hero,.relationship{min-height:620px;display:flex;align-items:center;text-align:center}.panel-content{width:100%}.eyebrow{margin:0 0 10px;color:#f4d7e8;font-size:14px;font-weight:800}
       h1{margin:0;font-size:32px;line-height:1.3;font-weight:900}.gold{color:#e6c978}.lead{margin:24px 0 0;font-size:16px;line-height:1.9}.lead.small{font-size:14px}
       .badges{display:flex;justify-content:center;gap:8px;margin:22px 0 2px}.badges span{padding:6px 12px;border:1px solid rgba(230,201,120,.35);border-radius:999px;color:#e6c978;font-size:12px;font-weight:700}
