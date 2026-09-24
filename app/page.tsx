@@ -220,7 +220,7 @@ export default function HonkidoPage() {
     </main>
 
     <style>{`
-      *{box-sizing:border-box} html,body{margin:0;background:#171128;color:#fffafc}
+      *{box-sizing:border-box} html,body{margin:0;background:#F5EFE6;color:#fffafc}
       body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif}
       button{font:inherit}.page{position:relative;width:100%;max-width:448px;min-height:100vh;margin:0 auto;padding:22px 16px 42px;overflow:hidden}
       .sparkles{position:fixed;inset:0;pointer-events:none;z-index:2}.sparkles i{position:absolute;color:rgba(255,229,158,.82);font-style:normal;text-shadow:0 0 11px rgba(255,214,112,.75);animation:twinkle 2.4s ease-in-out infinite}
