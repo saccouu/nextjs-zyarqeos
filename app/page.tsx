@@ -209,13 +209,12 @@ export default function HonkidoPage() {
             <p style={{margin:0}}>ここまで知りたいなら、今の状況を詳しく相談して、個別に見てもらう方法もあるわよ💋</p>
           </div>
           <p className="offer">＼ 初回 <span>3,000円分無料</span> ／</p>
-          <AffiliateButton>🔮 彼の気持ちを占ってもらう →</AffiliateButton>
+          <AffiliateButton>彼の気持ちを専門家に見てもらう →</AffiliateButton>
           <p className="fineprint">※PR：リンク先のサービスをご紹介しています。<br/>※無料特典の適用条件・対象サービス等はリンク先をご確認ください。<br/>※占い・相談の結果は将来や相手の気持ちを保証するものではありません。</p>
         </div></section>
         <button className="retry" onClick={reset}>もう一度チェックする</button>
       </> : null}
-
-      <section className="notice">このチェックは一般的な恋愛傾向をもとにした簡易コンテンツで、相手の気持ちや将来を断定・保証するものではありません。PRリンク先サービスを利用した場合、当サイトが報酬を受け取ることがあります。</section>
+      
       <footer>© ruby_bba / bbauranai.jp</footer>
       <img width="1" height="1" src={A8_PIXEL_URL} alt="" className="tracking"/>
     </main>
