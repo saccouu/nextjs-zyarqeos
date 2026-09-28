@@ -240,7 +240,7 @@ export default function HonkidoPage() {
       radial-gradient(circle at 91% 77%,rgba(255,255,255,.45) 0 1px,transparent 1.8px),
       linear-gradient(180deg,#392954,#2d2448);box-shadow:0 16px 36px rgba(0,0,0,.24)}
       .hero,.relationship{min-height:620px;display:flex;align-items:center;text-align:center}.panel-content{width:100%}.eyebrow{margin:0 0 10px;color:#f4d7e8;font-size:14px;font-weight:800}
-      h1{margin:0;font-size:32px;line-height:1.3;font-weight:900}.gold{color:#e6c978}.lead{margin:24px 0 0;font-size:16px;line-height:1.9}.lead.small{font-size:14px}
+      h1{margin:0;font-size:28px;line-height:1.3;font-weight:900}.gold{color:#e6c978}.lead{margin:24px 0 0;font-size:16px;line-height:1.9}.lead.small{font-size:14px}
       .badges{display:flex;justify-content:center;gap:8px;margin:22px 0 2px}.badges span{padding:6px 12px;border:1px solid rgba(230,201,120,.35);border-radius:999px;color:#e6c978;font-size:12px;font-weight:700}
       .cta{display:flex;align-items:center;justify-content:center;width:100%;min-height:60px;margin-top:16px;padding:14px;border:1px solid rgba(230,201,120,.42);border-radius:17px;color:white;background:linear-gradient(100deg,#dd2b7f,#c734a0 46%,#8d35c8);font-size:17px;font-weight:800;text-decoration:none;text-align:center;cursor:pointer}
       .fineprint{margin:12px 0 0;color:#aaa0b3;font-size:10px;line-height:1.7;text-align:center}.status-buttons{display:grid;gap:12px;margin-top:20px}.hero-status{margin-top:20px}.status-buttons button,.answers button{display:flex;justify-content:space-between;align-items:center;width:100%;padding:17px 16px;border:1px solid rgba(255,255,255,.14);border-radius:15px;color:white;background:rgba(17,10,28,.32);text-align:left;cursor:pointer}
