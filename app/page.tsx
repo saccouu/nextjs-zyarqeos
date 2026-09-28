@@ -3,9 +3,9 @@
 import { useMemo, useState } from "react";
 
 const AFFILIATE_URL =
-  "https://px.a8.net/svt/ejp?a8mat=3Z4WIB+45GOHE+2PEO+HUKPU&a8ejpredirect=https%3A%2F%2Fcoconala.com%2Fcategories%2F3%3Fservice_kind%3D1";
+  "https://px.a8.net/svt/ejp?a8mat=3Z4WIB+45GLEA+2PEO+HUKPU&a8ejpredirect=https%3A%2F%2Fcoconala.com%2Fcategories%2F656%3Fservice_kind%3D1%26ref%3Dcategory_popular_subcategories%26tr_v%3D2";
 const A8_PIXEL_URL =
-  "https://www10.a8.net/0.gif?a8mat=3Z4WIB+45GOHE+2PEO+HUKPU";
+  "https://www12.a8.net/0.gif?a8mat=3Z4WIB+45GLEA+2PEO+HUKPU";
 
 type Status = "dating" | "crush" | "ambiguous";
 type Answer = { label: string; score: number };
