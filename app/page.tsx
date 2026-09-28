@@ -207,8 +207,9 @@ export default function HonkidoPage() {
             <p style={{margin:0}}>ここまで知りたいなら、今の状況を詳しく相談して、プロに見てもらう方法もあるわよ💋</p>
           </div>
           <p className="offer">＼ 初回 <span>3,000円分相談無料</span> ／</p>
-          <p style={{margin:"0 0 18px"}}>✓ 料金は1分120円〜<br/>✓ 料金は話した時間の分だけ<br/>✓ 口コミを見て信頼できるプロを選べる</p>
-          <AffiliateButton>プロに相談して見てもらう →</AffiliateButton>
+          <AffiliateButton>もっと詳しく相談してみる →</AffiliateButton>          
+          <p style={{margin:"0 0 16px"}}>✓ 料金は1分120円〜<br/>✓ 料金は話した時間の分だけ<br/>✓ 口コミを見て信頼できるプロを選べる</p>
+          <AffiliateButton>これからの2人を見てもらう →</AffiliateButton>
           <p className="fineprint">※PR：リンク先のサービスをご紹介しています。<br/>※無料特典の適用条件・対象サービス等はリンク先をご確認ください。<br/>※占い・相談の結果は将来や相手の気持ちを保証するものではありません。</p>
         </div></section>
         <button className="retry" onClick={reset}>もう一度チェックする</button>
