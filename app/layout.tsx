@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: '彼の本気度をチェック',
-  description: '彼があなたをどう思ってるのか悩んでない？',
+  description: '彼は私をどう思ってる？',
 }
 
 export default function RootLayout({
