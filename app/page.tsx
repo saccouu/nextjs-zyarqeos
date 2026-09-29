@@ -195,7 +195,7 @@ export default function HonkidoPage() {
         <section className="panel"><div className="panel-content">
           <div className="body-copy">
             <p style={{margin:"0 0 18px"}}>
-              この診断で分かるのは、彼の<strong>「行動に出ている本気サイン」</strong>まで。
+              この診断で分かるのは、<strong>彼の「行動に出ている本気サイン」</strong>よ。でもね、行動だけでは分からないこともあるわ。
             </p>
             <div style={{display:"grid",gap:"4px",marginBottom:"20px"}}>
               {bridge[status][band].map((question)=>(
@@ -204,13 +204,13 @@ export default function HonkidoPage() {
                 </strong>
               ))}
             </div>
-            <p style={{margin:0}}>ここまで知りたいなら、今の状況を詳しく相談して、プロに見てもらう方法もあるわよ💋</p>
+            <p style={{margin:0}}>ここまで知りたいなら、今の状況を詳しく相談して、彼との関係をもっと深く見てもらう方法もあるわよ💋</p>
           </div>
           <p className="offer">＼ 初回 <span>3,000円分相談無料</span> ／</p>
           <AffiliateButton>もっと詳しく相談してみる →</AffiliateButton>       
         <div className="body-copy">
          <p style={{margin:18}}>✓ 料金は1分100円〜（通話料は無料）<br/>✓ 鑑定満足度98%以上！<br/>✓ レビュー200万件以上！</p></div>
-          <AffiliateButton>これからの2人を見てもらう →</AffiliateButton>
+          <AffiliateButton>彼との未来を見てもらう →</AffiliateButton>
           <p className="fineprint">※PR：リンク先のサービスをご紹介しています。<br/>※無料特典の適用条件・対象サービス等はリンク先をご確認ください。<br/>※占い・相談の結果は将来や相手の気持ちを保証するものではありません。</p>
         </div></section>
         <button className="retry" onClick={reset}>もう一度チェックする</button>
